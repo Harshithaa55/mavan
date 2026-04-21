@@ -1,10 +1,7 @@
 pipeline {
     agent any
 
-    tools {
-        maven 'Maven3'
-        jdk 'JDK17'
-    }
+    
 
     stages {
 
@@ -13,6 +10,15 @@ pipeline {
                 git 'https://github.com/Naveen04jan/ven.git'
             }
         }
+        stages {
+        stage('Build') {
+            steps {
+                sh 'mvn -v'
+                sh 'java -version'
+                sh 'mvn clean install'
+            }
+        }
+    }
 
         stage('Build') {
             steps {
