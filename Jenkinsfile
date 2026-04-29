@@ -7,7 +7,6 @@ pipeline {
     }
 
     stages {
-
         stage('Checkout') {
             steps {
                 git branch: 'main',
@@ -41,9 +40,7 @@ pipeline {
         }
     }
 
-    
     post {
-
         success {
             emailext (
                 subject: "SUCCESS: ${JOB_NAME} #${BUILD_NUMBER}",
@@ -51,7 +48,6 @@ pipeline {
                 to: "hsharshitha46@gmail.com"
             )
         }
-
         failure {
             emailext (
                 subject: "FAILED: ${JOB_NAME} #${BUILD_NUMBER}",
